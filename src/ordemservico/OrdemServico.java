@@ -20,17 +20,13 @@ public class OrdemServico {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws DAOException {
-        
-        Fachada fachada = new  Fachada();
-        Equipamento equipamento = new Equipamento();
-        
-        equipamento.setDescricao("note2222");
-        equipamento.setModelo("DESCONHECIDO");
-        equipamento.setNumSerie(32423);
-        
-        fachada.businessEquipamento.salvarOuAtualizar(equipamento);
+//        testeDao teste = new testeDao();
+//        new Thread(teste).start();
+     
 //        equipamento = daoEq.getById(Long.parseLong("1"));
 //        daoEq.deletar(equipamento);
     }
-    
+
+  
+
 }
