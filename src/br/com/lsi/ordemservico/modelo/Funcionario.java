@@ -6,11 +6,15 @@
 package br.com.lsi.ordemservico.modelo;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import sun.text.resources.FormatData;
 
 
 /**
@@ -26,7 +30,8 @@ public class Funcionario implements Serializable {
     
     private Pessoa pessoa;
     private String funcao;
-    private Date dateAdimicao;
+    @Temporal (TemporalType.TIMESTAMP)
+    private Calendar dateAdimicao;
 
     public Long getId() {
         return id;
@@ -52,13 +57,15 @@ public class Funcionario implements Serializable {
         this.funcao = funcao;
     }
 
-    public Date getDateAdimicao() {
+    public Calendar getDateAdimicao() {
         return dateAdimicao;
     }
 
-    public void setDateAdimicao(Date dateAdimicao) {
+    public void setDateAdimicao(Calendar dateAdimicao) {
         this.dateAdimicao = dateAdimicao;
     }
+
+ 
 
     
     @Override
@@ -85,5 +92,15 @@ public class Funcionario implements Serializable {
     public String toString() {
         return "br.com.lsi.ordemservico.modelo.Funcionario[ id=" + id + " ]";
     }
-    
+//    
+//    public static void main(String args[]){
+//        Funcionario func =new Funcionario();
+//        func.setDateAdimicao(Calendar.getInstance());
+//        func.setDateAdimicao(Calendar.getInstance().set(year, month, date));
+//        Calendar.getInstance().add(Calendar.DAY_OF_YEAR, 1);
+//        Calendar.getInstance().compareTo(null);
+//        Calendar.getInstance().getTime().getDate();
+//        
+//    }
+//    
 }

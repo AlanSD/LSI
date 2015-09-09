@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/modelo/Endereco.java</file>
-            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/modelo/Pessoa.java</file>
+            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/hibernate.cfg.xml</file>
             <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/modelo/Funcionario.java</file>
+            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/dao/DAOGeneric.java</file>
+            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/modelo/Pessoa.java</file>
+            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/commom/exception/DAOException.java</file>
+            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/modelo/Endereco.java</file>
+            <file>file:/C:/Users/Alan%20Santos%20Diniz/Documents/NetBeansProjects/OrdemServico/src/br/com/lsi/ordemservico/validation/Validation.java</file>
         </group>
     </open-files>
 </project-private>
