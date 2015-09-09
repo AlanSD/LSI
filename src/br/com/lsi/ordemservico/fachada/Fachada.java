@@ -5,10 +5,14 @@
  */
 package br.com.lsi.ordemservico.fachada;
 
+import br.com.lsi.ordemservico.business.BusinessEquipamento;
+
 /**
  *
  * @author Alan Santos Diniz
  */
 public class Fachada {
     
+   public final BusinessEquipamento businessEquipamento = new BusinessEquipamento();;
+
 }

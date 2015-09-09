@@ -8,6 +8,7 @@ package br.com.lsi.ordemservico.util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+
 /**
  *
  * @author Allan

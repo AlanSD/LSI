@@ -7,6 +7,7 @@ package ordemservico;
 
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.dao.DAOEquipamento;
+import br.com.lsi.ordemservico.fachada.Fachada;
 import br.com.lsi.ordemservico.modelo.Equipamento;
 
 /**
@@ -20,16 +21,16 @@ public class OrdemServico {
      */
     public static void main(String[] args) throws DAOException {
         
-        DAOEquipamento daoEq = new DAOEquipamento();
+        Fachada fachada = new  Fachada();
         Equipamento equipamento = new Equipamento();
         
-        equipamento.setDescricao("note");
+        equipamento.setDescricao("note2222");
         equipamento.setModelo("DESCONHECIDO");
         equipamento.setNumSerie(32423);
         
-        //daoEq.salvar(equipamento);
-        equipamento = daoEq.getById(Long.parseLong("1"));
-        daoEq.deletar(equipamento);
+        fachada.businessEquipamento.salvarOuAtualizar(equipamento);
+//        equipamento = daoEq.getById(Long.parseLong("1"));
+//        daoEq.deletar(equipamento);
     }
     
 }
