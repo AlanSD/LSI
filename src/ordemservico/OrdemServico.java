@@ -20,7 +20,7 @@ public class OrdemServico {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws DAOException {
-//        testeDao teste = new testeDao();
+     // testeDao teste = new testeDao();
 //        new Thread(teste).start();
      
 //        equipamento = daoEq.getById(Long.parseLong("1"));
