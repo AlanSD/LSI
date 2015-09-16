@@ -12,6 +12,6 @@ import br.com.lsi.ordemservico.modelo.Equipamento;
  *
  * @author Alan Santos Diniz
  */
-public class DAOEquipamento extends DAOGeneric<Equipamento> implements IDAOEquipamento{
+public class EquipamentoDAO extends DAOGeneric<Equipamento> implements IDAOEquipamento{
     
 }

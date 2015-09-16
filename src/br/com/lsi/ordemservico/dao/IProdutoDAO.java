@@ -7,16 +7,14 @@ package br.com.lsi.ordemservico.dao;
 
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.interfac.IDAOGeneric;
-import br.com.lsi.ordemservico.modelo.Empresa;
-import java.util.List;
+import br.com.lsi.ordemservico.modelo.Produto;
 
 /**
  *
- * @author Usuario
+ * @author Onismar
  */
-public interface IEmpresaDAO extends IDAOGeneric<Empresa>{
-
+public interface IProdutoDAO extends IDAOGeneric<Produto> {
     
-    public Empresa buscarPorCNPJ (String cnpj) throws DAOException;
+    public Produto buscarPorNome (String nome) throws DAOException;
     
 }

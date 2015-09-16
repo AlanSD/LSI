@@ -31,7 +31,7 @@ public class testeDao implements Runnable{
                         equipamento.setNumSerie(32423);
                         Thread.sleep(2000);
                         System.out.println("SALVANDO NOVO EQUIPAMENTO");
-                        fachada.businessEquipamento.salvarOuAtualizar(equipamento);
+                       // fachada.businessEquipamento.salvarOuAtualizar(equipamento);
 
                     }
 

@@ -12,6 +12,8 @@ import br.com.lsi.ordemservico.interfac.IDAOGeneric;
 import br.com.lsi.ordemservico.util.PersistenceUtil;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -23,10 +25,11 @@ import org.hibernate.criterion.Restrictions;
  */
 public class DAOGeneric<T> implements IDAOGeneric<T> {
 
-    private Class clazz;
-
+    private Class classe;
+     private EntityManagerFactory entityManagerFactory;
+    private EntityManager manager;
     public DAOGeneric() {
-        this.clazz = (Class<T>) ((ParameterizedType) getClass()
+        this.classe = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
     }
     
@@ -85,7 +88,7 @@ public class DAOGeneric<T> implements IDAOGeneric<T> {
         Session sessao = PersistenceUtil.getSessionFactory().openSession();
         try {
             sessao.getTransaction().begin();
-            Criteria criteria = sessao.createCriteria(clazz);
+            Criteria criteria = sessao.createCriteria(classe);
             criteria.add(Restrictions.eq("id", id));
             t = (T) criteria.uniqueResult();
             
@@ -105,7 +108,7 @@ public class DAOGeneric<T> implements IDAOGeneric<T> {
         Session sessao = PersistenceUtil.getSessionFactory().openSession();
         try {
             sessao.getTransaction().begin();
-            Criteria criteria = sessao.createCriteria(clazz);
+            Criteria criteria = sessao.createCriteria(classe);
             lista = criteria.list();
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,4 +119,21 @@ public class DAOGeneric<T> implements IDAOGeneric<T> {
         return lista;
     }
     
+    public EntityManager getEntityManeger(){
+        
+        try {
+            manager = entityManagerFactory.createEntityManager();
+            
+        } catch (Exception e) {
+        }
+        return manager;
+    }
+    
+    public Criteria getCriteria(){
+        try {
+            return ((Session) manager.getDelegate()).createCriteria(classe);
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }

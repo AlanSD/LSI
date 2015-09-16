@@ -6,7 +6,7 @@
 package br.com.lsi.ordemservico.business;
 
 import br.com.lsi.ordemservico.commom.exception.DAOException;
-import br.com.lsi.ordemservico.dao.DAOEquipamento;
+import br.com.lsi.ordemservico.dao.EquipamentoDAO;
 import br.com.lsi.ordemservico.modelo.Equipamento;
 import java.util.List;
 
@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class BusinessEquipamento {
 
-    DAOEquipamento daoEquipamento;
+    EquipamentoDAO daoEquipamento;
 
     public BusinessEquipamento() {
-        daoEquipamento = new DAOEquipamento();
+        daoEquipamento = new EquipamentoDAO();
     }
     
     public void salvarOuAtualizar (Equipamento eq) throws DAOException{

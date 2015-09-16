@@ -5,10 +5,10 @@
  */
 package br.com.lsi.ordemservico.interfac;
 
-
-
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import java.util.List;
+import javax.persistence.EntityManager;
+import org.hibernate.Criteria;
 
 /**
  *
@@ -19,10 +19,14 @@ public interface IDAOGeneric<T> {
     public void salvar(T t) throws DAOException;
 
     public void atualizar(T t) throws DAOException;
-    
-    public void deletar( T t) throws DAOException;
+
+    public void deletar(T t) throws DAOException;
 
     public T getById(Long id) throws DAOException;
-    
+
     public List<T> getAll() throws DAOException;
+
+    public EntityManager getEntityManeger() throws DAOException;
+
+    public Criteria getCriteria() throws DAOException;
 }

@@ -14,77 +14,22 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-public class EmpresaDAO {
 
-    public class EmpresaDao implements IEmpresaDAO {
 
-        private Class classe;
+    public class EmpresaDAO extends DAOGeneric<Empresa> implements IEmpresaDAO {
+        
         private EntityManager manager;
-        public EntityManagerFactory entityManagerFactory;
 
         @Override
-        public void inserir(Empresa e) {
+        public Empresa buscarPorCNPJ(String cnpj) throws DAOException {
 
-            manager = entityManagerFactory.createEntityManager();
-
-            manager.getTransaction().begin();
-            manager.persist(e);
-            manager.getTransaction().commit();
-            manager.close();
-
-        }
-
-        @Override
-        public void editar(Empresa e) throws DAOException {
-            manager = entityManagerFactory.createEntityManager();
-
-            manager.getTransaction().begin();
-            e = manager.merge(e);
-            manager.getTransaction().commit();
-            manager.close();
-
-        }
-
-        @Override
-        public void remover(int id) throws DAOException {
-
-        }
-
-        @Override
-        public List<Empresa> listarEmpresa() {
-            List<Empresa> lista = null;
-
-            manager = entityManagerFactory.createEntityManager();
-
-            Session session = (Session) manager.getDelegate();
-            Criteria criteria = session.createCriteria(classe);
-            lista = criteria.list();
-            return lista;
-
-        }
-
-        @Override
-        public List<Empresa> listarEmpresaPorNome(String nome) {
-            List<Empresa> lista = null;
-            manager = entityManagerFactory.createEntityManager();
-            Session session = (Session) manager.getDelegate();
-            Criteria criteria = session.createCriteria(classe);
-            criteria.add(Restrictions.eq("Nome", nome));
- 
-            return lista;
-
-        }
-
-        @Override
-        public Empresa getPorId(int id) throws DAOException {
             Empresa e = null;
-            manager = entityManagerFactory.createEntityManager();
-            Session session = (Session) manager.getDelegate();
-            Criteria criteria = session.createCriteria(classe);
-            criteria.add(Restrictions.eq("id", id));
+            manager = this.getEntityManeger();
+            Criteria criteria = this.getCriteria();
+            criteria.add(Restrictions.eq("cnpj", cnpj));
             e = (Empresa) criteria.uniqueResult();
-
             return e;
         }
+
+        
     }
-}

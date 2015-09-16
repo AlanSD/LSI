@@ -5,6 +5,7 @@
  */
 package br.com.lsi.ordemservico.modelo;
 
+import br.com.lsi.ordemservico.enuns.Sexo;
 import java.io.Serializable;
 
 import java.util.Calendar;
@@ -31,8 +32,10 @@ public class Funcionario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Pessoa pessoa;
+    private String nome,cpf;
+    private Sexo sexo;
     private String funcao;
+    
     @Temporal (TemporalType.TIMESTAMP)
     private Calendar dateAdimicao;
 
@@ -44,13 +47,31 @@ public class Funcionario implements Serializable {
         this.id = id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public String getNome() {
+        return nome;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+
+    
 
     public String getFuncao() {
         return funcao;
