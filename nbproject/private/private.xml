@@ -10,8 +10,10 @@
             <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/ordemservico/testeDao.java</file>
             <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/ordemservico/OrdemServico.java</file>
             <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/br/com/lsi/ordemservico/dao/IEmpresaDAO.java</file>
+            <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/br/com/lsi/ordemservico/dao/EquipamentoDAO.java</file>
             <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/hibernate.cfg.xml</file>
             <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/br/com/lsi/ordemservico/dao/FuncionarioDAO.java</file>
+            <file>file:/C:/Users/Onismar/Documents/NetBeansProjects/LSI/src/br/com/lsi/ordemservico/fachada/IFachada.java</file>
         </group>
     </open-files>
 </project-private>
