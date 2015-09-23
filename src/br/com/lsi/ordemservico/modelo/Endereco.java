@@ -11,10 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author Alan Santos Diniz
- */
+
 @Entity
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -26,7 +23,7 @@ public class Endereco implements Serializable {
     private String bairro;
     private String cidade;
     private String cep;
-    private char uf;
+    private String uf;
 
     public Long getId() {
         return id;
@@ -68,14 +65,13 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
-    public char getUf() {
+    public String getUf() {
         return uf;
     }
 
-    public void setUf(char uf) {
+    public void setUf(String uf) {
         this.uf = uf;
     }
-
     
     @Override
     public int hashCode() {
