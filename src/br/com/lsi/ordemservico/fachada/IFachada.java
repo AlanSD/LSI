@@ -9,6 +9,7 @@ import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.modelo.Empresa;
 import br.com.lsi.ordemservico.modelo.Equipamento;
 import br.com.lsi.ordemservico.modelo.Funcionario;
+import br.com.lsi.ordemservico.modelo.Marca;
 import br.com.lsi.ordemservico.modelo.Produto;
 import br.com.lsi.ordemservico.modelo.Servico;
 import java.util.List;
@@ -31,7 +32,7 @@ public interface IFachada {
     public List<Funcionario> getAllFuncionarios()throws DAOException;
 
     //-------------------------Empresa----------------------------------------//
-    public void salvarEmpresas(Empresa e)throws DAOException;
+     public void salvarEmpresas(Empresa e)throws DAOException;
 
     public Empresa buscarPorCNPJ(String cnpj)throws DAOException;
 
@@ -78,5 +79,16 @@ public interface IFachada {
     public Equipamento getByIdEquipamentos(Long id)throws DAOException;
 
     public List<Equipamento> getAllEquipamentos()throws DAOException;
+           //-----------------------MARCA------------------------------------------//  
+    public void salvarMarca(Marca m)throws DAOException;
+
+    public void atualizarMarca(Marca m)throws DAOException;
+
+    public void deletarMarca(Marca m)throws DAOException;
+
+    public Marca getByIdMarca(Long id)throws DAOException;
+
+    public List<Marca> getAllMarca()throws DAOException;
+
 
 }

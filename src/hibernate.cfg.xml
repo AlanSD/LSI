@@ -6,8 +6,13 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ordemsevico?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">4312</property>
+    <property name="hibernate.connection.password">3412</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="br.com.lsi.ordemservico.modelo.Equipamento"/>
+    <mapping class="br.com.lsi.ordemservico.modelo.Funcionario"/>
+    <mapping class="br.com.lsi.ordemservico.modelo.Produto"/>
+    <mapping class="br.com.lsi.ordemservico.modelo.Servico"/>
+    <mapping class="br.com.lsi.ordemservico.modelo.Empresa"/>
+    <mapping class="br.com.lsi.ordemservico.modelo.Marca"/>
   </session-factory>
 </hibernate-configuration>

@@ -8,9 +8,9 @@ package br.com.lsi.ordemservico.dao;
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.modelo.Produto;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+
 
 
 

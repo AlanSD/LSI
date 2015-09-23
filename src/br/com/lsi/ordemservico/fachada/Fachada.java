@@ -14,12 +14,14 @@ import br.com.lsi.ordemservico.dao.IEmpresaDAO;
 import br.com.lsi.ordemservico.dao.IFuncionario;
 import br.com.lsi.ordemservico.dao.IProdutoDAO;
 import br.com.lsi.ordemservico.dao.IServicoDAO;
+import br.com.lsi.ordemservico.dao.MarcaDAO;
 import br.com.lsi.ordemservico.dao.ProdutoDAO;
 import br.com.lsi.ordemservico.dao.ServicoDAO;
 import br.com.lsi.ordemservico.interfac.IDAOEquipamento;
 import br.com.lsi.ordemservico.modelo.Empresa;
 import br.com.lsi.ordemservico.modelo.Equipamento;
 import br.com.lsi.ordemservico.modelo.Funcionario;
+import br.com.lsi.ordemservico.modelo.Marca;
 import br.com.lsi.ordemservico.modelo.Produto;
 import br.com.lsi.ordemservico.modelo.Servico;
 import java.util.List;
@@ -37,6 +39,7 @@ public class Fachada implements IFachada {
     private IProdutoDAO daoPro;
     private IServicoDAO daoSer;
     private IDAOEquipamento daoEq;
+    private MarcaDAO daoMarca;
 
     public Fachada() {
         this.daoFun = new FuncionarioDAO();
@@ -44,6 +47,7 @@ public class Fachada implements IFachada {
         this.daoPro = new ProdutoDAO();
         this.daoSer = new ServicoDAO();
         this.daoEq = new EquipamentoDAO();
+        this.daoMarca = new MarcaDAO();
 
     }
 //---------------------------Funcionario--------------------------------------------------
@@ -83,7 +87,7 @@ public class Fachada implements IFachada {
     }
 //---------------------------------------Empresa------------------------------------------------------------------
 
-    @Override
+       @Override
     public void salvarEmpresas(Empresa e) throws DAOException {
 
         daoEmp.salvar(e);
@@ -206,4 +210,30 @@ public class Fachada implements IFachada {
     }
 
    //public final BusinessEquipamento businessEquipamento = new BusinessEquipamento();;
+    
+    @Override
+    public void salvarMarca(Marca m) throws DAOException {
+        daoMarca.salvar(m);
+    }
+
+    @Override
+    public void atualizarMarca(Marca m) throws DAOException {
+        daoMarca.atualizar(m);
+    }
+
+    @Override
+    public void deletarMarca(Marca m) throws DAOException {
+        daoMarca.deletar(m);
+    }
+
+    @Override
+    public Marca getByIdMarca(Long id) throws DAOException {
+        return daoMarca.getById(id) ;
+    }
+
+    @Override
+    public List<Marca> getAllMarca() throws DAOException {
+        return daoMarca.getAll();
+    }
+
 }

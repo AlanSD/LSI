@@ -24,6 +24,7 @@ public class Equipamento implements Serializable {
     private String descricao;
     private String modelo;
     private float numSerie;
+    private String marca;
 
     public Long getEquipamentoId() {
         return equipamentoId;
@@ -56,6 +57,16 @@ public class Equipamento implements Serializable {
     public void setNumSerie(float numSerie) {
         this.numSerie = numSerie;
     }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    
+    
     
     
 
