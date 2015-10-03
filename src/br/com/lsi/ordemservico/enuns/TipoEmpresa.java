@@ -11,8 +11,8 @@ package br.com.lsi.ordemservico.enuns;
  */
 public enum TipoEmpresa {
     
-    PESSOAFISICA("PESSOAFISICA"),
-    PESSOAJURIDICA("PESSOAJURIDICA");
+    FORNECEDOR("FORNECEDOR"),
+    CLIENTE("CLIENTE");
     
     private String tipoEmpresa;
     
@@ -20,19 +20,18 @@ public enum TipoEmpresa {
         this.tipoEmpresa = empresa;
     }
 
-    public static TipoEmpresa getPESSOAFISICA() {
-        return PESSOAFISICA;
+    public static TipoEmpresa getFORNECEDOR() {
+        return FORNECEDOR;
     }
 
-    public static TipoEmpresa getPESSOAJURIDICA() {
-        return PESSOAJURIDICA;
+    public static TipoEmpresa getCLIENTE() {
+        return CLIENTE;
     }
 
     public String getTipoEmpresa() {
         return tipoEmpresa;
     }
-    
-    
+  
     
     
 }

@@ -23,6 +23,7 @@ public class Servico implements Serializable {
     private Long id;
     private String nome;
     private Double preco;
+    private String descricao;
 
     public String getNome() {
         return nome;
@@ -38,6 +39,14 @@ public class Servico implements Serializable {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
     

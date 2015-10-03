@@ -5,6 +5,8 @@
  */
 package br.com.lsi.ordemservico.swing;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author Allan
@@ -13,7 +15,12 @@ public class Principal extends javax.swing.JFrame {
 
    
     public Principal() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ex) {
+        }
         initComponents();
+        setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);   
     }
 
@@ -32,6 +39,9 @@ public class Principal extends javax.swing.JFrame {
         btOs = new javax.swing.JButton();
         btCliente = new javax.swing.JButton();
         btEquipamento = new javax.swing.JButton();
+        btEquipamento1 = new javax.swing.JButton();
+        btEquipamento2 = new javax.swing.JButton();
+        btEquipamento3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -44,7 +54,7 @@ public class Principal extends javax.swing.JFrame {
         uJPanelImagem3.setLayout(uJPanelImagem3Layout);
         uJPanelImagem3Layout.setHorizontalGroup(
             uJPanelImagem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 651, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
         uJPanelImagem3Layout.setVerticalGroup(
             uJPanelImagem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,7 +67,12 @@ public class Principal extends javax.swing.JFrame {
         btOs.setText("Ordem de Serviço");
 
         btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/lsi/ordemservico/imagens/10693_32x32.png"))); // NOI18N
-        btCliente.setText("Cliente");
+        btCliente.setText("Funcionario");
+        btCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClienteActionPerformed(evt);
+            }
+        });
 
         btEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/lsi/ordemservico/imagens/107_32x32.png"))); // NOI18N
         btEquipamento.setText("Equipamento");
@@ -67,17 +82,41 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btEquipamento1.setText("Serviço");
+        btEquipamento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEquipamento1ActionPerformed(evt);
+            }
+        });
+
+        btEquipamento2.setText("Produto");
+        btEquipamento2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEquipamento2ActionPerformed(evt);
+            }
+        });
+
+        btEquipamento3.setText("Empresa");
+        btEquipamento3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEquipamento3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout uJPanelImagem2Layout = new javax.swing.GroupLayout(uJPanelImagem2);
         uJPanelImagem2.setLayout(uJPanelImagem2Layout);
         uJPanelImagem2Layout.setHorizontalGroup(
             uJPanelImagem2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, uJPanelImagem2Layout.createSequentialGroup()
+            .addGroup(uJPanelImagem2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(uJPanelImagem2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btOs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                    .addComponent(btCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btEquipamento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(uJPanelImagem2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCalendar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(btOs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEquipamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEquipamento2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btEquipamento3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         uJPanelImagem2Layout.setVerticalGroup(
@@ -91,7 +130,13 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(btCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btEquipamento)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btEquipamento2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btEquipamento1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btEquipamento3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Menu");
@@ -124,6 +169,26 @@ public class Principal extends javax.swing.JFrame {
         EquipamentoView eqView = new EquipamentoView(null, true);
         eqView.setVisible(true);
     }//GEN-LAST:event_btEquipamentoActionPerformed
+
+    private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
+       FuncionarioView fView = new FuncionarioView(null, true);
+       fView.setVisible(true);
+    }//GEN-LAST:event_btClienteActionPerformed
+
+    private void btEquipamento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamento1ActionPerformed
+        ServicoView serView = new ServicoView(null, true);
+        serView.setVisible(true);
+    }//GEN-LAST:event_btEquipamento1ActionPerformed
+
+    private void btEquipamento2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamento2ActionPerformed
+        ProdutoView proView = new ProdutoView();
+        proView.setVisible(true);
+    }//GEN-LAST:event_btEquipamento2ActionPerformed
+
+    private void btEquipamento3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamento3ActionPerformed
+      EmpresaView empView = new EmpresaView(this, true);
+      empView.setVisible(true);
+    }//GEN-LAST:event_btEquipamento3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +229,9 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCliente;
     private javax.swing.JButton btEquipamento;
+    private javax.swing.JButton btEquipamento1;
+    private javax.swing.JButton btEquipamento2;
+    private javax.swing.JButton btEquipamento3;
     private javax.swing.JButton btOs;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JMenu jMenu1;

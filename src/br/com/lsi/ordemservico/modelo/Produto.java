@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -25,6 +26,8 @@ public class Produto implements Serializable {
     private Double preco;
     private Double precoCompra;
     private String unidadeMedida;
+    @ManyToOne
+    private Empresa empresa;
 
     public String getNome() {
         return nome;
@@ -56,6 +59,14 @@ public class Produto implements Serializable {
 
     public void setUnidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
     
        

@@ -5,12 +5,14 @@
  */
 package br.com.lsi.ordemservico.interfac;
 
+import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.modelo.Equipamento;
+import java.util.List;
 
 /**
  *
  * @author Alan Santos Diniz
  */
 public interface IDAOEquipamento extends IDAOGeneric<Equipamento>{
-    
+    public List<Equipamento> buscaPorNome(String nome) throws DAOException;
 }

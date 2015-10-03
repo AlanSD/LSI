@@ -79,6 +79,8 @@ public interface IFachada {
     public Equipamento getByIdEquipamentos(Long id)throws DAOException;
 
     public List<Equipamento> getAllEquipamentos()throws DAOException;
+    
+    public List<Equipamento> buscarPorDescricao(String nome)throws DAOException;
            //-----------------------MARCA------------------------------------------//  
     public void salvarMarca(Marca m)throws DAOException;
 

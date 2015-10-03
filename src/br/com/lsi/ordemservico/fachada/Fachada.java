@@ -208,6 +208,12 @@ public class Fachada implements IFachada {
         
 
     }
+    
+    @Override
+    public List<Equipamento> buscarPorDescricao(String nome) throws DAOException {
+        
+        return daoEq.buscaPorNome(nome);
+    }
 
    //public final BusinessEquipamento businessEquipamento = new BusinessEquipamento();;
     

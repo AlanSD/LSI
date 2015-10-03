@@ -11,7 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
+/**
+ *
+ * @author Alan Santos Diniz
+ */
 @Entity
 public class Endereco implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -72,6 +75,8 @@ public class Endereco implements Serializable {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
+    
     
     @Override
     public int hashCode() {

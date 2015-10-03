@@ -88,7 +88,7 @@ public class DAOGeneric<T> implements IDAOGeneric<T> {
         T t=null;
         Session sessao = PersistenceUtil.getSessionFactory().openSession();
         try {
-            sessao.getTransaction().begin();
+           // sessao.getTransaction().begin();
             Criteria criteria = sessao.createCriteria(classe);
             criteria.add(Restrictions.eq("id", id));
             t = (T) criteria.uniqueResult();

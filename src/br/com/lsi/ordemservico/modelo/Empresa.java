@@ -1,10 +1,12 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package br.com.lsi.ordemservico.modelo;
 
+
+import br.com.lsi.ordemservico.enuns.TipoEmpresa;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,6 @@ import javax.persistence.Id;
  */
 @Entity
 public class Empresa implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,15 +26,18 @@ public class Empresa implements Serializable {
     private Endereco endereco;
     private String nomeFantasia;
     private String CNPJ;
-    private Endereco enderecoEmpresa = new Endereco();
+    
+    private TipoEmpresa tipoEmpresa;
 
-    public Endereco getEnderecoEmpresa() {
-        return enderecoEmpresa;
+    public TipoEmpresa getTipoEmpresa() {
+        return tipoEmpresa;
     }
 
-    public void setEnderecoEmpresa(Endereco enderecoEmpresa) {
-        this.enderecoEmpresa = enderecoEmpresa;
+    public void setTipoEmpresa(TipoEmpresa tipoEmpresa) {
+        this.tipoEmpresa = tipoEmpresa;
     }
+    
+    
 
     public Long getId() {
         return id;
@@ -91,5 +95,5 @@ public class Empresa implements Serializable {
     public String toString() {
         return "br.com.lsi.ordemservico.modelo.Empresa[ id=" + id + " ]";
     }
-
+    
 }
