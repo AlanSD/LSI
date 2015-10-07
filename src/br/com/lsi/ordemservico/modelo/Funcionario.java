@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,11 +29,10 @@ import javax.persistence.TemporalType;
  * @author Alan Santos Diniz
  */
 @Entity
-public class Funcionario implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@PrimaryKeyJoinColumn(name="id")
+public class Funcionario extends Pessoa {
+    
+  
     private String nome,cpf;
     private Sexo sexo;
     private String funcao;
@@ -40,14 +40,7 @@ public class Funcionario implements Serializable {
     @Temporal (TemporalType.TIMESTAMP)
     private Calendar dateAdimicao;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+   
     public String getNome() {
         return nome;
     }
