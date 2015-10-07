@@ -5,13 +5,13 @@
  */
 package br.com.lsi.ordemservico.dao;
 
+import br.com.lsi.ordemservico.interfac.IDAOGeneric;
 import br.com.lsi.ordemservico.modelo.Funcionario;
 
 /**
  *
  * @author Onismar
  */
-public class FuncionarioDAO extends DAOGeneric<Funcionario>  implements  IFuncionarioDAO{
-    
+public interface IFuncionarioDAO extends IDAOGeneric<Funcionario>{
     
 }

@@ -5,13 +5,12 @@
  */
 package br.com.lsi.ordemservico.dao;
 
-import br.com.lsi.ordemservico.modelo.Funcionario;
+import br.com.lsi.ordemservico.modelo.Cliente;
 
 /**
  *
- * @author Onismar
+ * @author Alan Santos Diniz
  */
-public class FuncionarioDAO extends DAOGeneric<Funcionario>  implements  IFuncionarioDAO{
-    
+public class ClienteDAO extends DAOGeneric<Cliente>  implements  IClienteDAO{
     
 }

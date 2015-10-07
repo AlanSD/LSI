@@ -42,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
         btEquipamento1 = new javax.swing.JButton();
         btEquipamento2 = new javax.swing.JButton();
         btEquipamento3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -103,6 +104,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cliente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout uJPanelImagem2Layout = new javax.swing.GroupLayout(uJPanelImagem2);
         uJPanelImagem2.setLayout(uJPanelImagem2Layout);
         uJPanelImagem2Layout.setHorizontalGroup(
@@ -116,7 +124,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btEquipamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btEquipamento2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btEquipamento3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btEquipamento3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         uJPanelImagem2Layout.setVerticalGroup(
@@ -126,6 +135,8 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btOs)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,6 +201,11 @@ public class Principal extends javax.swing.JFrame {
       empView.setVisible(true);
     }//GEN-LAST:event_btEquipamento3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ClienteView cliView = new ClienteView(null,true);
+        cliView.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +249,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btEquipamento2;
     private javax.swing.JButton btEquipamento3;
     private javax.swing.JButton btOs;
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

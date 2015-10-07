@@ -35,6 +35,30 @@ public class Contato implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public int getCodigoEstado() {
+        return codigoEstado;
+    }
+
+    public void setCodigoEstado(int codigoEstado) {
+        this.codigoEstado = codigoEstado;
+    }
+
+    public Operadora getOperadora() {
+        return operadora;
+    }
+
+    public void setOperadora(Operadora operadora) {
+        this.operadora = operadora;
+    }
     
     
 

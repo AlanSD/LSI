@@ -10,14 +10,16 @@ import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.dao.EmpresaDAO;
 import br.com.lsi.ordemservico.dao.EquipamentoDAO;
 import br.com.lsi.ordemservico.dao.FuncionarioDAO;
+import br.com.lsi.ordemservico.dao.IClienteDAO;
 import br.com.lsi.ordemservico.dao.IEmpresaDAO;
-import br.com.lsi.ordemservico.dao.IFuncionario;
+import br.com.lsi.ordemservico.dao.IFuncionarioDAO;
 import br.com.lsi.ordemservico.dao.IProdutoDAO;
 import br.com.lsi.ordemservico.dao.IServicoDAO;
 import br.com.lsi.ordemservico.dao.MarcaDAO;
 import br.com.lsi.ordemservico.dao.ProdutoDAO;
 import br.com.lsi.ordemservico.dao.ServicoDAO;
 import br.com.lsi.ordemservico.interfac.IDAOEquipamento;
+import br.com.lsi.ordemservico.modelo.Cliente;
 import br.com.lsi.ordemservico.modelo.Empresa;
 import br.com.lsi.ordemservico.modelo.Equipamento;
 import br.com.lsi.ordemservico.modelo.Funcionario;
@@ -34,7 +36,8 @@ import java.util.logging.Logger;
  */
 public class Fachada implements IFachada {
 
-    private IFuncionario daoFun;
+    private IFuncionarioDAO daoFun;
+    private IClienteDAO daoClient;
     private IEmpresaDAO daoEmp;
     private IProdutoDAO daoPro;
     private IServicoDAO daoSer;
@@ -84,6 +87,32 @@ public class Fachada implements IFachada {
 
         return daoFun.getAll();
 
+    }
+//--------------------------------------Cliente--------------------------------------------------------------  
+    
+     @Override
+    public void salvarClientes(Cliente c) throws DAOException {
+       daoClient.salvar(c);
+    }
+
+    @Override
+    public void atualizarClientes(Cliente c) throws DAOException {
+       daoClient.atualizar(c);
+    }
+
+    @Override
+    public void deletarClientes(Cliente c) throws DAOException {
+       daoClient.deletar(c);
+    }
+
+    @Override
+    public Cliente getByIdClientes(Long id) throws DAOException {
+        return daoClient.getById(id);
+    }
+
+    @Override
+    public List<Cliente> getAllClientes() throws DAOException {
+       return daoClient.getAll();
     }
 //---------------------------------------Empresa------------------------------------------------------------------
 
@@ -241,5 +270,7 @@ public class Fachada implements IFachada {
     public List<Marca> getAllMarca() throws DAOException {
         return daoMarca.getAll();
     }
+
+   
 
 }

@@ -24,7 +24,9 @@ public class PersistenceUtil {
             System.out.println("Criação inicial do objeto SessionFactory falhou." 
                     + "Erro: " + e);
             throw new ExceptionInInitializerError(e);
+            
         }
+     
     }
     
     public static SessionFactory getSessionFactory(){

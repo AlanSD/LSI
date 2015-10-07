@@ -17,5 +17,6 @@
     <mapping class="br.com.lsi.ordemservico.modelo.Pessoa"/>
     <mapping class="br.com.lsi.ordemservico.modelo.Cliente"/>
     <mapping class="br.com.lsi.ordemservico.modelo.Contato"/>
+    <mapping class="br.com.lsi.ordemservico.modelo.Endereco"/>
   </session-factory>
 </hibernate-configuration>

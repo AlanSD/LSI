@@ -7,9 +7,7 @@ package br.com.lsi.ordemservico.swing;
 
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.fachada.Fachada;
-import br.com.lsi.ordemservico.modelo.Equipamento;
-import br.com.lsi.ordemservico.modelo.Funcionario;
-import java.util.ArrayList;
+import br.com.lsi.ordemservico.modelo.Cliente;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,19 +18,43 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alan Santos Diniz
  */
-public class FuncionarioView extends javax.swing.JDialog {
+public class ClienteView extends javax.swing.JDialog {
 
     /**
-     * Creates new form FuncionarioView
+     * Creates new form ClienteView
      */
-    private Fachada facade = new Fachada();
-
-    public FuncionarioView(java.awt.Frame parent, boolean modal) {
+    
+     private Fachada facade = new Fachada();
+    
+    public ClienteView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
     }
 
+    
+     private void preencherJtableCliente(List<Cliente> lista) {
+
+      
+
+        DefaultTableModel modelo = (DefaultTableModel) jtDados.getModel();
+        modelo.setNumRows(0);
+
+        try {
+
+            if (lista.size() > 0) {
+                for (Cliente cliente : lista) {
+                    modelo.addRow(new Object[]{cliente.getId(), cliente.getNome(), cliente.getCpf(), cliente.getSexo(),
+                        cliente.getEndereco().getUf(),cliente.getEndereco().getCidade(),cliente.getEndereco().getRua(), 
+                        cliente.getEndereco().getBairro(),cliente.getEndereco().getCep(),cliente.getDtCadastro()});
+                }
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO AO LISTAR");
+        }
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,14 +68,11 @@ public class FuncionarioView extends javax.swing.JDialog {
         btNovo = new javax.swing.JButton();
         btEdit = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtBuscarDesc = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtDados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(609, 334));
+        setPreferredSize(new java.awt.Dimension(1105, 325));
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -66,7 +85,6 @@ public class FuncionarioView extends javax.swing.JDialog {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         uJPanelImagem4.setImagem(new java.io.File("C:\\imagens\\2.jpg"));
 
@@ -91,20 +109,6 @@ public class FuncionarioView extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Função:");
-
-        txtBuscarDesc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarDescActionPerformed(evt);
-            }
-        });
-        txtBuscarDesc.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtBuscarDescKeyPressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout uJPanelImagem4Layout = new javax.swing.GroupLayout(uJPanelImagem4);
         uJPanelImagem4.setLayout(uJPanelImagem4Layout);
         uJPanelImagem4Layout.setHorizontalGroup(
@@ -116,10 +120,6 @@ public class FuncionarioView extends javax.swing.JDialog {
                 .addComponent(btEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBuscarDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         uJPanelImagem4Layout.setVerticalGroup(
@@ -129,20 +129,16 @@ public class FuncionarioView extends javax.swing.JDialog {
                 .addGroup(uJPanelImagem4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btNovo)
                     .addComponent(btEdit)
-                    .addComponent(btExcluir)
-                    .addComponent(jLabel1)
-                    .addComponent(txtBuscarDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btExcluir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        getContentPane().add(uJPanelImagem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
 
         jtDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "NOME", "CPF", "SEXO", "FUNÇÃO", "DATA DE ADIMIÇÃO"
+                "ID", "NOME", "CPF", "SEXO", "ESTADO", "CIDADE", "RUA", "BAIRRO", "CEP", "DATA DE CADASTRO"
             }
         ));
         jtDados.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -157,52 +153,48 @@ public class FuncionarioView extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(jtDados);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 590, 250));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(uJPanelImagem4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(uJPanelImagem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void preencherJtableFuncionario(List<Funcionario> lista) {
-
-      
-
-        DefaultTableModel modelo = (DefaultTableModel) jtDados.getModel();
-        modelo.setNumRows(0);
-
-        try {
-
-            if (lista.size() > 0) {
-                for (Funcionario funcionario : lista) {
-                    modelo.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getCpf(), funcionario.getSexo(), funcionario.getFuncao(), funcionario.getDtCadastro()});
-                }
-                return;
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO AO LISTAR");
-        }
-
-    }
-
-
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
-        FuncionarioEdit funcEdit = new FuncionarioEdit(null, true);
-      
-        funcEdit.setVisible(true);
+        ClienteEdit ClienteEdit = new ClienteEdit(null, true);
+
+        ClienteEdit.setVisible(true);
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditActionPerformed
         int linhaSelecionada = jtDados.getSelectedRow();//pegando linha selecionada
         if (linhaSelecionada == -1) {
-            JOptionPane.showMessageDialog(null, "Funcionario Não Selecionado");
+            JOptionPane.showMessageDialog(null, "Cliente Não Selecionado");
         }
         String id = (jtDados.getValueAt(linhaSelecionada, 0).toString());
         try {
-            FuncionarioEdit funcEdit = new FuncionarioEdit(null, true);
-            funcEdit.inserirFuncionario(facade.getByIdFuncionarios(Long.parseLong(id)));
-             Funcionario func = new Funcionario();
-            func = facade.getByIdFuncionarios(Long.parseLong(id));
-            funcEdit.id = func.getId();
-            funcEdit.setVisible(true);
+            ClienteEdit clientEdit = new ClienteEdit(null, true);
+            clientEdit.inserirCliente(facade.getByIdClientes(Long.parseLong(id)));
+            Cliente clinet = new Cliente();
+            clinet = facade.getByIdClientes(Long.parseLong(id));
+            clientEdit.id = clinet.getId();
+            clientEdit.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -211,13 +203,13 @@ public class FuncionarioView extends javax.swing.JDialog {
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         int linhaSelecionada = jtDados.getSelectedRow();//pegando linha selecionada
         if (linhaSelecionada == -1) {
-            JOptionPane.showMessageDialog(null, "Funcionario Não Selecionado");
+            JOptionPane.showMessageDialog(null, "Cliente Não Selecionado");
         }
         String id = (jtDados.getValueAt(linhaSelecionada, 0).toString());
         int x = JOptionPane.showConfirmDialog(null, "Deseja Deletar");
         if (x == 0) {
             try {
-                facade.deletarFuncionarios(facade.getByIdFuncionarios(Long.parseLong(id)));
+                facade.deletarClientes(facade.getByIdClientes(Long.parseLong(id)));
                 JOptionPane.showMessageDialog(null, "Excluido com Sucesso");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -226,6 +218,10 @@ public class FuncionarioView extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
+    private void jtDadosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDadosFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtDadosFocusGained
+
     private void jtDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtDadosMouseClicked
 
         if (evt.getClickCount() > 1) {
@@ -233,45 +229,33 @@ public class FuncionarioView extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jtDadosMouseClicked
 
-    private void jtDadosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtDadosFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtDadosFocusGained
-
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        try {
-            preencherJtableFuncionario(facade.getAllFuncionarios());
-        } catch (DAOException ex) {
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_formWindowGainedFocus
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         //Definindo o tamanho das colunas
-      
-        jtDados.getColumnModel().getColumn(1).setPreferredWidth(100);
-        jtDados.getColumnModel().getColumn(2).setPreferredWidth(100);
-        jtDados.getColumnModel().getColumn(3).setPreferredWidth(100);
-        jtDados.getColumnModel().getColumn(4).setPreferredWidth(100);
+        
+        jtDados.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jtDados.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jtDados.getColumnModel().getColumn(3).setPreferredWidth(50);
+        jtDados.getColumnModel().getColumn(4).setPreferredWidth(50);
         jtDados.getColumnModel().getColumn(5).setPreferredWidth(100);
+        jtDados.getColumnModel().getColumn(6).setPreferredWidth(50);
+        jtDados.getColumnModel().getColumn(7).setPreferredWidth(50);
+        jtDados.getColumnModel().getColumn(8).setPreferredWidth(50);
+        jtDados.getColumnModel().getColumn(9).setPreferredWidth(50);
+   
         
 
         //Definindo tamanho 0 a coluna ID
         jtDados.getColumnModel().getColumn(0).setMinWidth(0);
         jtDados.getColumnModel().getColumn(0).setPreferredWidth(0);
         jtDados.getColumnModel().getColumn(0).setMaxWidth(0);
-                
     }//GEN-LAST:event_formWindowOpened
 
-    private void txtBuscarDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarDescActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarDescActionPerformed
-
-    private void txtBuscarDescKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarDescKeyPressed
-        List<Funcionario> listaf = new ArrayList<Funcionario>();
-        //listaf = 
-        
-        preencherJtableFuncionario(listaf);
-    }//GEN-LAST:event_txtBuscarDescKeyPressed
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+         try {
+             preencherJtableCliente(facade.getAllClientes());
+         } catch (DAOException ex) {
+             Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -290,20 +274,20 @@ public class FuncionarioView extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FuncionarioView dialog = new FuncionarioView(new javax.swing.JFrame(), true);
+                ClienteView dialog = new ClienteView(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -319,10 +303,8 @@ public class FuncionarioView extends javax.swing.JDialog {
     private javax.swing.JButton btEdit;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jtDados;
-    private javax.swing.JTextField txtBuscarDesc;
     private componentes.UJPanelImagem uJPanelImagem4;
     // End of variables declaration//GEN-END:variables
 }

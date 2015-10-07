@@ -33,37 +33,12 @@ import javax.persistence.TemporalType;
 public class Funcionario extends Pessoa {
     
   
-    private String nome,cpf;
-    private Sexo sexo;
     private String funcao;
     
     @Temporal (TemporalType.TIMESTAMP)
-    private Calendar dateAdimicao;
+   
 
    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Sexo getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
-    }
 
     
 
@@ -75,13 +50,7 @@ public class Funcionario extends Pessoa {
         this.funcao = funcao;
     }
 
-    public Calendar getDateAdimicao() {
-        return dateAdimicao;
-    }
 
-    public void setDateAdimicao(Calendar dateAdimicao) {
-        this.dateAdimicao = dateAdimicao;
-    }
     
     
 

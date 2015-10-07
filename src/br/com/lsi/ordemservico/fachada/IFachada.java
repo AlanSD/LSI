@@ -6,6 +6,7 @@
 package br.com.lsi.ordemservico.fachada;
 
 import br.com.lsi.ordemservico.commom.exception.DAOException;
+import br.com.lsi.ordemservico.modelo.Cliente;
 import br.com.lsi.ordemservico.modelo.Empresa;
 import br.com.lsi.ordemservico.modelo.Equipamento;
 import br.com.lsi.ordemservico.modelo.Funcionario;
@@ -30,6 +31,17 @@ public interface IFachada {
     public Funcionario getByIdFuncionarios(Long id)throws DAOException;
 
     public List<Funcionario> getAllFuncionarios()throws DAOException;
+    
+      //------------------------------Clientes------------------------------//
+    public void salvarClientes(Cliente c) throws DAOException;
+
+    public void atualizarClientes(Cliente c)throws DAOException;
+
+    public void deletarClientes(Cliente c)throws DAOException;
+
+    public Cliente getByIdClientes(Long id)throws DAOException;
+
+    public List<Cliente> getAllClientes()throws DAOException;
 
     //-------------------------Empresa----------------------------------------//
      public void salvarEmpresas(Empresa e)throws DAOException;

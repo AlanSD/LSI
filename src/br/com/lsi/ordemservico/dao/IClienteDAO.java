@@ -6,12 +6,13 @@
 package br.com.lsi.ordemservico.dao;
 
 import br.com.lsi.ordemservico.interfac.IDAOGeneric;
-import br.com.lsi.ordemservico.modelo.Funcionario;
+import br.com.lsi.ordemservico.modelo.Cliente;
+
 
 /**
  *
- * @author Onismar
+ * @author Alan Santos Diniz
  */
-public interface IFuncionario extends IDAOGeneric<Funcionario>{
+public interface IClienteDAO  extends IDAOGeneric<Cliente>{
     
 }

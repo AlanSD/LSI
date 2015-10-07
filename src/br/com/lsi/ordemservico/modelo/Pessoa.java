@@ -5,14 +5,25 @@
  */
 package br.com.lsi.ordemservico.modelo;
 
+import br.com.lsi.ordemservico.modelo.Endereco;
+import br.com.lsi.ordemservico.modelo.Contato;
 import br.com.lsi.ordemservico.enuns.Sexo;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,8 +40,12 @@ public class Pessoa implements Serializable {
        
     private String nome,cpf;
     private Sexo sexo;
-    private Endereco endeeco;
-    private Contato contato;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Contato> contato;
+    @Temporal(TemporalType.DATE)
+    private Calendar dtCadastro;
 
     
     
@@ -58,20 +73,30 @@ public class Pessoa implements Serializable {
         this.sexo = sexo;
     }
 
-    public Endereco getEndeeco() {
-        return endeeco;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEndeeco(Endereco endeeco) {
-        this.endeeco = endeeco;
+    public void setEndereco(Endereco endeeco) {
+        this.endereco = endeeco;
     }
 
-    public Contato getContato() {
+    public List<Contato> getContato() {
         return contato;
     }
 
-    public void setContato(Contato contato) {
+    public void setContato(List<Contato> contato) {
         this.contato = contato;
+    }
+
+   
+
+    public Calendar getDtCadastro() {
+        return dtCadastro;
+    }
+
+    public void setDtCadastro(Calendar dtCadastro) {
+        this.dtCadastro = dtCadastro;
     }
     
     
