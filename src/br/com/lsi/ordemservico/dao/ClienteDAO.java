@@ -5,7 +5,11 @@
  */
 package br.com.lsi.ordemservico.dao;
 
+import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.modelo.Cliente;
+import br.com.lsi.ordemservico.modelo.Contato;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,4 +17,7 @@ import br.com.lsi.ordemservico.modelo.Cliente;
  */
 public class ClienteDAO extends DAOGeneric<Cliente>  implements  IClienteDAO{
     
+  
+   
+
 }

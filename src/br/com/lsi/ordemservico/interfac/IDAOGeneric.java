@@ -27,7 +27,5 @@ public interface IDAOGeneric<T> {
 
     public List<T> getAll() throws DAOException;
 
-    public EntityManager getEntityManeger() throws DAOException;
-
-    public Criteria getCriteria() throws DAOException;
+   
 }

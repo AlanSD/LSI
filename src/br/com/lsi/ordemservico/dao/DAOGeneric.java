@@ -27,8 +27,7 @@ import org.hibernate.criterion.Restrictions;
 public class DAOGeneric<T> implements IDAOGeneric<T> {
 
     private Class classe;
-     private EntityManagerFactory entityManagerFactory;
-    private EntityManager manager;
+ 
     public DAOGeneric() {
         this.classe = (Class<T>) ((ParameterizedType) getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[0];
@@ -120,21 +119,5 @@ public class DAOGeneric<T> implements IDAOGeneric<T> {
         return lista;
     }
     
-    public EntityManager getEntityManeger(){
-        
-        try {
-            manager = entityManagerFactory.createEntityManager();
-            
-        } catch (Exception e) {
-        }
-        return manager;
-    }
-    
-    public Criteria getCriteria(){
-        try {
-            return ((Session) manager.getDelegate()).createCriteria(classe);
-        } catch (Exception e) {
-        }
-        return null;
-    }
+  
 }

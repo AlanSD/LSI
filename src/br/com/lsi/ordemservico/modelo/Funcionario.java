@@ -30,17 +30,11 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @PrimaryKeyJoinColumn(name="id")
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements Serializable{
     
   
     private String funcao;
-    
-    @Temporal (TemporalType.TIMESTAMP)
    
-
-   
-
-    
 
     public String getFuncao() {
         return funcao;
@@ -49,6 +43,8 @@ public class Funcionario extends Pessoa {
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
+
+ 
 
 
     

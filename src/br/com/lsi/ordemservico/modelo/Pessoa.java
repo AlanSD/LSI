@@ -42,8 +42,6 @@ public class Pessoa implements Serializable {
     private Sexo sexo;
     @ManyToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Contato> contato;
     @Temporal(TemporalType.DATE)
     private Calendar dtCadastro;
 
@@ -79,14 +77,6 @@ public class Pessoa implements Serializable {
 
     public void setEndereco(Endereco endeeco) {
         this.endereco = endeeco;
-    }
-
-    public List<Contato> getContato() {
-        return contato;
-    }
-
-    public void setContato(List<Contato> contato) {
-        this.contato = contato;
     }
 
    

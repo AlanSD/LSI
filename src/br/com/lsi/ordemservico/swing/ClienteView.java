@@ -8,6 +8,8 @@ package br.com.lsi.ordemservico.swing;
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.fachada.Fachada;
 import br.com.lsi.ordemservico.modelo.Cliente;
+import br.com.lsi.ordemservico.modelo.Contato;
+import br.com.lsi.ordemservico.util.Utilitarios;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,15 +39,17 @@ public class ClienteView extends javax.swing.JDialog {
       
 
         DefaultTableModel modelo = (DefaultTableModel) jtDados.getModel();
+        jtDados.setRowHeight(25);
         modelo.setNumRows(0);
-
+            Utilitarios utilitarios = new Utilitarios();
         try {
 
             if (lista.size() > 0) {
                 for (Cliente cliente : lista) {
+                    String data = utilitarios.pasarCalendarParaString(cliente.getDtCadastro());
                     modelo.addRow(new Object[]{cliente.getId(), cliente.getNome(), cliente.getCpf(), cliente.getSexo(),
                         cliente.getEndereco().getUf(),cliente.getEndereco().getCidade(),cliente.getEndereco().getRua(), 
-                        cliente.getEndereco().getBairro(),cliente.getEndereco().getCep(),cliente.getDtCadastro()});
+                        cliente.getEndereco().getBairro(),cliente.getEndereco().getCep(),data});
                 }
                 return;
             }
@@ -72,7 +76,6 @@ public class ClienteView extends javax.swing.JDialog {
         jtDados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1105, 325));
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -160,7 +163,7 @@ public class ClienteView extends javax.swing.JDialog {
             .addComponent(uJPanelImagem4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1113, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -194,6 +197,9 @@ public class ClienteView extends javax.swing.JDialog {
             Cliente clinet = new Cliente();
             clinet = facade.getByIdClientes(Long.parseLong(id));
             clientEdit.id = clinet.getId();
+           
+           
+            
             clientEdit.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -227,6 +233,7 @@ public class ClienteView extends javax.swing.JDialog {
         if (evt.getClickCount() > 1) {
             System.out.println("clicou 2 vezes");
         }
+        
     }//GEN-LAST:event_jtDadosMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -239,7 +246,7 @@ public class ClienteView extends javax.swing.JDialog {
         jtDados.getColumnModel().getColumn(6).setPreferredWidth(50);
         jtDados.getColumnModel().getColumn(7).setPreferredWidth(50);
         jtDados.getColumnModel().getColumn(8).setPreferredWidth(50);
-        jtDados.getColumnModel().getColumn(9).setPreferredWidth(50);
+  
    
         
 

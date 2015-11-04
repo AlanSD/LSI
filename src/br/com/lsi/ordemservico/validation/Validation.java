@@ -5,12 +5,12 @@
  */
 package br.com.lsi.ordemservico.validation;
 
-
 import java.awt.Color;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.metal.MetalBorders;
@@ -40,7 +40,6 @@ public class Validation {
         return false;
     }
 
-
     public static boolean validaTelaVisao(String nomeTela) {
         if (nomeTela.equals("dialog0")) {
             return true;
@@ -54,6 +53,18 @@ public class Validation {
         DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
         return df.format(cal.getTime());
     }
-    
 
+    public static boolean validaCpfOuCep(String txt) {
+        if (!txt.equals("")) {
+            try {
+                int numero = Integer.parseInt(txt);
+                return true;
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Campos com valores incoreto CPF OU CEP");
+                return false;
+            }
+
+        }else
+            return true;
+    }
 }

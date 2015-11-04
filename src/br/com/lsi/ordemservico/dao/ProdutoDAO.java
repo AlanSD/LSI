@@ -7,8 +7,11 @@ package br.com.lsi.ordemservico.dao;
 
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.modelo.Produto;
+import br.com.lsi.ordemservico.util.PersistenceUtil;
 import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -26,18 +29,22 @@ public class ProdutoDAO extends DAOGeneric<Produto> implements IProdutoDAO{
 
     @Override
     public Produto buscarPorNome(String nome) throws DAOException {
-              Produto p = null;
+            
+        Session sessoa = PersistenceUtil.getSessionFactory().openSession();
+        
+        Produto p = null;
         try{
-            manager = this.getEntityManeger();
-            Criteria criteria = this.getCriteria();
+            
+            sessoa.getTransaction().begin();
+            Criteria criteria = sessoa.createCriteria(Produto.class);
             criteria.add(Restrictions.eq("nome", nome));
             p = (Produto) criteria.uniqueResult();
         }catch (Exception e){
-            manager.getTransaction().rollback();
+            sessoa.getTransaction().rollback();
             e.printStackTrace();
             throw new DAOException("Erro ao pesquisar por nome");
         }finally{
-            manager.close();
+           sessoa.close();
         }
       return p;
         

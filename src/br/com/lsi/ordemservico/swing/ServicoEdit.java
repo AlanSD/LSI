@@ -199,7 +199,7 @@ public class ServicoEdit extends javax.swing.JDialog {
         s.setNome(txtNome.getText());
        
         s.setPreco(Double.parseDouble(txtPreco.getText()));
-        s.setDescricao(txtPreco.getText());
+        s.setDescricao(txtDescricao.getText());
 
         if (id == null){
             try {

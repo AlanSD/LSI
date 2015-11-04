@@ -7,6 +7,7 @@ package br.com.lsi.ordemservico.fachada;
 
 import br.com.lsi.ordemservico.business.BusinessEquipamento;
 import br.com.lsi.ordemservico.commom.exception.DAOException;
+import br.com.lsi.ordemservico.dao.ClienteDAO;
 import br.com.lsi.ordemservico.dao.EmpresaDAO;
 import br.com.lsi.ordemservico.dao.EquipamentoDAO;
 import br.com.lsi.ordemservico.dao.FuncionarioDAO;
@@ -51,6 +52,7 @@ public class Fachada implements IFachada {
         this.daoSer = new ServicoDAO();
         this.daoEq = new EquipamentoDAO();
         this.daoMarca = new MarcaDAO();
+        this.daoClient= new ClienteDAO();
 
     }
 //---------------------------Funcionario--------------------------------------------------
