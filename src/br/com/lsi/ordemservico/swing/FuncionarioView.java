@@ -26,6 +26,7 @@ public class FuncionarioView extends javax.swing.JDialog {
      * Creates new form FuncionarioView
      */
     private Fachada facade = new Fachada();
+    private  DefaultTableModel modelo = new DefaultTableModel(); //(DefaultTableModel) jtDados.getModel();
 
     public FuncionarioView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -164,7 +165,8 @@ public class FuncionarioView extends javax.swing.JDialog {
 
     private void preencherJtableFuncionario(List<Funcionario> lista) {
 
-        DefaultTableModel modelo = (DefaultTableModel) jtDados.getModel();
+        jtDados.setRowHeight(25);
+        modelo = (DefaultTableModel) jtDados.getModel();
         modelo.setNumRows(0);
 
         try {
@@ -172,8 +174,9 @@ public class FuncionarioView extends javax.swing.JDialog {
             if (lista.size() > 0) {
                 for (Funcionario funcionario : lista) {
                     modelo.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getCpf(), funcionario.getSexo()
-//                        funcionario.getEndereco().getUf(), funcionario.getEndereco().getCidade(), funcionario.getEndereco().getRua(),
-//                        funcionario.getEndereco().getBairro(), funcionario.getEndereco().getCep(), funcionario.getDtCadastro()
+                      , funcionario.getEndereco().getUf(), funcionario.getEndereco().getCidade(),
+                       funcionario.getEndereco().getRua(),funcionario.getEndereco().getBairro(), funcionario.getEndereco().getCep()
+                      , funcionario.getDtCadastro()
                     });
                 }
                 return;

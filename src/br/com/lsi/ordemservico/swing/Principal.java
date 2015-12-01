@@ -5,6 +5,11 @@
  */
 package br.com.lsi.ordemservico.swing;
 
+import br.com.lsi.ordemservico.commom.exception.DAOException;
+import br.com.lsi.ordemservico.enuns.Nivel;
+import br.com.lsi.ordemservico.validation.Validation;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 
 /**
@@ -21,9 +26,15 @@ public class Principal extends javax.swing.JFrame {
         }
         initComponents();
         setLocationRelativeTo(null);
-        this.setExtendedState(MAXIMIZED_BOTH);   
+        this.setExtendedState(MAXIMIZED_BOTH);  
+        testaNivel();
     }
-
+ public void testaNivel() {
+        if (Validation.getUsuario().getNivel().equals(Nivel.USUARIO)) {
+            btUsuario.setEnabled(false);
+            btUsuario.setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +54,7 @@ public class Principal extends javax.swing.JFrame {
         btEquipamento2 = new javax.swing.JButton();
         btEquipamento3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btUsuario = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -59,13 +71,18 @@ public class Principal extends javax.swing.JFrame {
         );
         uJPanelImagem3Layout.setVerticalGroup(
             uJPanelImagem3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         uJPanelImagem2.setImagem(new java.io.File("C:\\imagens\\2.jpg"));
 
         btOs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/lsi/ordemservico/imagens/1593_32x32.png"))); // NOI18N
         btOs.setText("Ordem de Serviço");
+        btOs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btOsActionPerformed(evt);
+            }
+        });
 
         btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/lsi/ordemservico/imagens/10693_32x32.png"))); // NOI18N
         btCliente.setText("Funcionario");
@@ -111,6 +128,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        btUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/lsi/ordemservico/imagens/10693_32x32.png"))); // NOI18N
+        btUsuario.setText("Usuário");
+        btUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout uJPanelImagem2Layout = new javax.swing.GroupLayout(uJPanelImagem2);
         uJPanelImagem2.setLayout(uJPanelImagem2Layout);
         uJPanelImagem2Layout.setHorizontalGroup(
@@ -125,7 +150,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btEquipamento1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btEquipamento2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btEquipamento3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         uJPanelImagem2Layout.setVerticalGroup(
@@ -147,7 +173,8 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(btEquipamento1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btEquipamento3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btUsuario))
         );
 
         jMenu1.setText("Menu");
@@ -206,6 +233,20 @@ public class Principal extends javax.swing.JFrame {
         cliView.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOsActionPerformed
+       DialogOrdemView ordView = new DialogOrdemView(null, true);
+       ordView.setVisible(true);
+    }//GEN-LAST:event_btOsActionPerformed
+
+    private void btUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUsuarioActionPerformed
+         try {
+            DialogUsuarioView dialogUsuarioView = new DialogUsuarioView(this, true);
+            dialogUsuarioView.setVisible(true);
+        } catch (DAOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +290,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btEquipamento2;
     private javax.swing.JButton btEquipamento3;
     private javax.swing.JButton btOs;
+    private javax.swing.JButton btUsuario;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JMenu jMenu1;

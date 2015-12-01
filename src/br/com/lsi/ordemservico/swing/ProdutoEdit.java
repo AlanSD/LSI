@@ -8,9 +8,11 @@ package br.com.lsi.ordemservico.swing;
 import br.com.lsi.ordemservico.commom.exception.DAOException;
 import br.com.lsi.ordemservico.fachada.Fachada;
 import br.com.lsi.ordemservico.modelo.Produto;
+import br.com.lsi.ordemservico.util.Caracter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -29,7 +31,10 @@ public class ProdutoEdit extends javax.swing.JDialog {
     
     public ProdutoEdit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+           MaskFormatter mascara = null;
         initComponents();
+         txtPrecoCompra.setDocument(new Caracter());
+         txtPrecoVenda.setDocument(new Caracter());
     }
 
     
@@ -37,9 +42,10 @@ public class ProdutoEdit extends javax.swing.JDialog {
      
         txtId.setText(p.getId().toString());
         txtNome.setText(p.getNome());
-        txtUnidade.setText(p.getUnidadeMedida());
+        jFormattedTextFieldUnidade.setText(p.getUnidadeMedida());
         txtPrecoVenda.setText(String.valueOf(p.getPreco()));
         txtPrecoCompra.setText(String.valueOf(p.getPrecoCompra()));
+        
         
        
           
@@ -64,18 +70,17 @@ public class ProdutoEdit extends javax.swing.JDialog {
         lblNumSerie = new javax.swing.JLabel();
         txtPrecoCompra = new javax.swing.JTextField();
         lblModelo = new javax.swing.JLabel();
-        txtUnidade = new javax.swing.JTextField();
         lblMarca = new javax.swing.JLabel();
         btNovaMarca1 = new javax.swing.JButton();
         cbxFornecedor = new javax.swing.JComboBox();
         lblMarca1 = new javax.swing.JLabel();
         txtPrecoVenda = new javax.swing.JTextField();
+        jFormattedTextFieldUnidade = new javax.swing.JFormattedTextField();
         btSalvar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produto");
-        setPreferredSize(new java.awt.Dimension(500, 300));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados"));
 
@@ -101,12 +106,6 @@ public class ProdutoEdit extends javax.swing.JDialog {
 
         lblModelo.setText("UNIDADE:");
 
-        txtUnidade.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUnidadeFocusLost(evt);
-            }
-        });
-
         lblMarca.setText("PREÇO:");
 
         btNovaMarca1.setText("ADD");
@@ -130,6 +129,12 @@ public class ProdutoEdit extends javax.swing.JDialog {
             }
         });
 
+        try {
+            jFormattedTextFieldUnidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#######")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,9 +155,9 @@ public class ProdutoEdit extends javax.swing.JDialog {
                     .addComponent(txtNome)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFormattedTextFieldUnidade, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPrecoVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUnidade, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(82, 82, 82)
                         .addComponent(lblNumSerie)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -178,7 +183,7 @@ public class ProdutoEdit extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblModelo)
-                    .addComponent(txtUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMarca1)
@@ -207,13 +212,15 @@ public class ProdutoEdit extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btCancelar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -240,17 +247,13 @@ public class ProdutoEdit extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecoCompraFocusLost
 
-    private void txtUnidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUnidadeFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUnidadeFocusLost
-
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
        
         Produto  p = new Produto();
         p.setNome(txtNome.getText());
-        p.setUnidadeMedida(txtUnidade.getText());
-        p.setPrecoCompra(Double.parseDouble(txtPrecoCompra.getText()));
-        p.setPreco(Double.parseDouble(txtPrecoVenda.getText()));
+        p.setUnidadeMedida(jFormattedTextFieldUnidade.getText());
+        p.setPrecoCompra(Double.parseDouble(txtPrecoCompra.getText().replace(",", ".")));
+        p.setPreco(Double.parseDouble(txtPrecoVenda.getText().replace(",", ".")));
 
         if (id == null){
             try {
@@ -339,6 +342,7 @@ public class ProdutoEdit extends javax.swing.JDialog {
     private javax.swing.JButton btNovaMarca1;
     private javax.swing.JButton btSalvar;
     private javax.swing.JComboBox cbxFornecedor;
+    private javax.swing.JFormattedTextField jFormattedTextFieldUnidade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDesc;
     private javax.swing.JLabel lblId;
@@ -350,6 +354,5 @@ public class ProdutoEdit extends javax.swing.JDialog {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPrecoCompra;
     private javax.swing.JTextField txtPrecoVenda;
-    private javax.swing.JTextField txtUnidade;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,11 +6,14 @@
 package br.com.lsi.ordemservico.fachada;
 
 import br.com.lsi.ordemservico.business.BusinessEquipamento;
+import br.com.lsi.ordemservico.business.BusinessUsuario;
 import br.com.lsi.ordemservico.commom.exception.DAOException;
+import br.com.lsi.ordemservico.dao.CidadeDAO;
 import br.com.lsi.ordemservico.dao.ClienteDAO;
 import br.com.lsi.ordemservico.dao.EmpresaDAO;
 import br.com.lsi.ordemservico.dao.EquipamentoDAO;
 import br.com.lsi.ordemservico.dao.FuncionarioDAO;
+import br.com.lsi.ordemservico.dao.ICidadeDAO;
 import br.com.lsi.ordemservico.dao.IClienteDAO;
 import br.com.lsi.ordemservico.dao.IEmpresaDAO;
 import br.com.lsi.ordemservico.dao.IFuncionarioDAO;
@@ -20,6 +23,7 @@ import br.com.lsi.ordemservico.dao.MarcaDAO;
 import br.com.lsi.ordemservico.dao.ProdutoDAO;
 import br.com.lsi.ordemservico.dao.ServicoDAO;
 import br.com.lsi.ordemservico.interfac.IDAOEquipamento;
+import br.com.lsi.ordemservico.modelo.Cidade;
 import br.com.lsi.ordemservico.modelo.Cliente;
 import br.com.lsi.ordemservico.modelo.Empresa;
 import br.com.lsi.ordemservico.modelo.Equipamento;
@@ -44,6 +48,8 @@ public class Fachada implements IFachada {
     private IServicoDAO daoSer;
     private IDAOEquipamento daoEq;
     private MarcaDAO daoMarca;
+    private ICidadeDAO daoCidade;
+    public BusinessUsuario businessUsuarios ;
 
     public Fachada() {
         this.daoFun = new FuncionarioDAO();
@@ -53,6 +59,8 @@ public class Fachada implements IFachada {
         this.daoEq = new EquipamentoDAO();
         this.daoMarca = new MarcaDAO();
         this.daoClient= new ClienteDAO();
+        this.daoCidade = new CidadeDAO();
+       this.businessUsuarios = new BusinessUsuario();
 
     }
 //---------------------------Funcionario--------------------------------------------------
@@ -116,6 +124,38 @@ public class Fachada implements IFachada {
     public List<Cliente> getAllClientes() throws DAOException {
        return daoClient.getAll();
     }
+    
+ //--------------------------------------Cidade--------------------------------------------------------------  
+    
+    @Override
+    public void salvarCidade(Cidade c) throws DAOException {
+        daoCidade.salvar(c);
+    }
+
+    @Override
+    public void atualizarCidade(Cidade c) throws DAOException {
+        daoCidade.atualizar(c);
+    }
+
+    @Override
+    public void deletarCidade(Cidade c) throws DAOException {
+       daoCidade.atualizar(c);
+    }
+
+    @Override
+    public Cidade getByIdCidade(Long id) throws DAOException {
+        return daoCidade.getById(id);
+                }
+
+    @Override
+    public List<Cidade> getAllCidade() throws DAOException {
+       return daoCidade.getAll();
+    }
+    @Override
+    public List<Cidade> getCidadePorEstado(String uf) throws DAOException {
+       return daoCidade.getCidadePorEstado(uf);
+    }
+    
 //---------------------------------------Empresa------------------------------------------------------------------
 
        @Override
@@ -272,6 +312,9 @@ public class Fachada implements IFachada {
     public List<Marca> getAllMarca() throws DAOException {
         return daoMarca.getAll();
     }
+
+    
+
 
    
 

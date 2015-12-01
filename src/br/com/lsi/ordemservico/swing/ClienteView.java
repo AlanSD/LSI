@@ -48,7 +48,8 @@ public class ClienteView extends javax.swing.JDialog {
                 for (Cliente cliente : lista) {
                     String data = utilitarios.pasarCalendarParaString(cliente.getDtCadastro());
                     modelo.addRow(new Object[]{cliente.getId(), cliente.getNome(), cliente.getCpf(), cliente.getSexo(),
-                        cliente.getEndereco().getUf(),cliente.getEndereco().getCidade(),cliente.getEndereco().getRua(), 
+                       cliente.getEndereco().getUf(),cliente.getEndereco().getCidade(),
+                        cliente.getEndereco().getRua(), 
                         cliente.getEndereco().getBairro(),cliente.getEndereco().getCep(),data});
                 }
                 return;
